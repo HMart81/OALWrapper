@@ -32,3 +32,6 @@ OALWrapper.vcxproj.filters
 OALWrapper.vcxproj.user
 OALWrapper.suo
 OALWrapper.sdf
+sources/OAL_Device.cpp.bak
+sources/OAL_OggSample.cpp.bak
+*.bak

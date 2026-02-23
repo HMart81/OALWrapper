@@ -92,11 +92,11 @@ bool cOAL_SourceManager::Initialize ( bool abManageVoices, int alNumSourcesHint,
 		// Note that this is an int value, so any freq above 1000 will turn mlThreadWaitTime to 0;
 		mlThreadWaitTime = 1000/alUpdateFreq;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		mpUpdaterThread = SDL_CreateThread ( UpdaterThread, "OAL Updater", NULL );
+		mpUpdaterThread = SDL_CreateThread( UpdaterThread, "OAL Updater", NULL );
 #else
 		mpUpdaterThread = SDL_CreateThread ( UpdaterThread, NULL );
 #endif
-		mpStreamListMutex = SDL_CreateMutex ();
+		mpStreamListMutex = SDL_CreateMutex();
 
 		LogMsg("", eOAL_LogVerbose_Medium, eOAL_LogMsg_Info, "Done\n" );
 	}

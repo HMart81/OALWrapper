@@ -29,8 +29,8 @@ struct tMemoryReader {
 
 	tMemoryReader(const void* aBuff, size_t aBuffSize) : buff(NULL), buff_size(aBuffSize), buff_pos(0)
 	{
-		buff = new char[buff_size];
-		memcpy(buff, aBuff, buff_size);
+		buff = new char[(int)buff_size];
+		memcpy(buff, aBuff, (size_t)buff_size);
 	}
 	~tMemoryReader()
 	{
@@ -43,7 +43,7 @@ size_t memoryRead(void * buff, size_t b, size_t nelts, void *data)
 	tMemoryReader *of = reinterpret_cast<tMemoryReader*>(data);
 	size_t len = b * nelts;
 	if (of->buff_pos + len > of->buff_size) {
-		len = of->buff_size - of->buff_pos;
+		len = size_t(of->buff_size - of->buff_pos);
 	}
 	if (len)
 		memcpy(buff, of->buff + of->buff_pos, len );
@@ -82,7 +82,7 @@ int memorySeek(void *data, ogg_int64_t seek, int type)
 long memoryTell(void* data)
 {
 	tMemoryReader *of = reinterpret_cast<tMemoryReader*>(data);
-	return of->buff_pos;
+	return (long)of->buff_pos;
 }
 
 int memoryClose(void* data)

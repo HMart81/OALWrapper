@@ -35,7 +35,7 @@ static size_t OAL_OggBufferRead(void* dest, size_t eltSize, size_t nelts, OAL_Og
 	size_t len = eltSize * nelts;
 	if ( (src->pos + len) > src->size)
 	{
-		len = src->size - src->pos;
+		len = unsigned int(src->size - src->pos);
 	}
 	if (len > 0)
 	{
@@ -77,7 +77,7 @@ static int OAL_OggBufferClose(OAL_OggMemoryFile* src)
 
 static long OAL_OggBufferTell(OAL_OggMemoryFile *src)
 {
-	return src->pos;
+	return (long)src->pos;
 }
 
 static ov_callbacks OAL_CALLBACKS_BUFFER = {

@@ -167,6 +167,7 @@ bool cOAL_Device::Init( cOAL_Init_Params& acParams )
 	msDeviceName = RUN_ALC_FUNC(alcGetString(mpDevice, ALC_DEVICE_SPECIFIER));
 
 	// Get vendor name (just fancy stuff,not very useful)
+	// NOTE(HM) if this fails to get a valid string will crash the game
 	msVendorName = RUN_ALC_FUNC(alGetString( AL_VENDOR ));
 
 	//Get renderer info
