@@ -152,7 +152,7 @@ bool cOAL_WAVSample::CreateFromBuffer(const void* apBuffer, size_t aSize)
 	const char* base = readStruct(wave_data, ptr);
 
 	size_t size = wave_data.subChunkSize;
-	if (size > (end - base)) {
+	if (size > (size_t)(end - base)) {
 		return false;
 	}
 
